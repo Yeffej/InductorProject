@@ -1,0 +1,12 @@
+{
+  "name": "Electric_Project",
+  "version": "0.1.0",
+  "description": "Aplicación web para explicar el tema de los inductores eléctricos.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
