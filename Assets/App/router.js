@@ -1,3 +1,6 @@
+import Loader from "../Templates/Loader.js";
+
+
 class Router {
     constructor(ALL_ROUTES) {
         this.routes = ALL_ROUTES
@@ -14,10 +17,12 @@ class Router {
         console.log(Rpath)
         const matchedRoute = this.matchRouteWithRoutes(Rpath)
         if(matchedRoute){
-            console.log("Working")
             window.history.pushState({}, "", "/#" + Rpath)
             const target = document.querySelector("#app")
-            target.innerHTML =  matchedRoute.template;
+            target.innerHTML = Loader();
+
+            setTimeout(() => target.innerHTML =  matchedRoute.template, 3000)
+            
         }else
             return;
     }

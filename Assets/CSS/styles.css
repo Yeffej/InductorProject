@@ -1,8 +1,28 @@
+/* LOADER STYLES */
+@import url("./loader.css");
+/* LOADER STYLES */
+
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 body {
+    display: flex;
+}
 
+.Navigation {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 5px;
+}
+.MainApp {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: calc(100vh - 10px);
+    margin: 5px;
 }
