@@ -2,7 +2,19 @@
 @import url("./loader.css");
 /* LOADER STYLES */
 
-
+:root {
+    --titleTextColor: #07215a;
+    --titleSecondTextColor: #0521be;
+    --fontTitle: fantasy;
+    --textNavPresenColor: #eeefff;
+    --textNavBTColor: #6b048d;
+    --textNavBTColorHover: #2111FF; 
+    --navBackgroundColor: #111111;
+    --backgroundBT: #02404e;
+    --radialBackground: radial-gradient(circle, rgba(2, 0, 36, 1) 0%, rgba(20, 20, 43, 1) 50%, rgba(0, 0, 0, 1) 100%);
+    --SecondbackgroundBT: #0e9069;
+    --thirdbackgroundBT: #e22706;
+}
 * {
     margin: 0;
     padding: 0;
@@ -10,13 +22,36 @@
 }
 body {
     display: flex;
+    font-family: Arial, Helvetica, sans-serif;
 }
+
+/* NAVIGATION BAR AND MAIN */
 
 .Navigation {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 5px;
+    margin-right: 5px;
+    padding: 5px;
+    background-color: var(--navBackgroundColor);
+    text-align: center;
+}
+.Navigation_Presentation {
+    font-size: 1.5em;
+    font-weight: 900;
+    color: var(--textNavPresenColor);
+    margin-bottom: 10px;
+}
+.Navigation .nav-bt {
+    color: var(--textNavBTColor);
+    margin: 8px 0;
+    font-size: 1.2em;
+    text-decoration: none;
+    font-weight: 600;
+}
+.Navigation .nav-bt:hover {
+    color: var(--textNavBTColorHover);
+    text-decoration: underline;
 }
 .MainApp {
     display: flex;
@@ -24,5 +59,231 @@ body {
     align-items: center;
     width: 100%;
     height: calc(100vh - 10px);
-    margin: 5px;
 }
+
+/* NAVIGATION BAR AND MAIN */
+
+/* Generals */
+    .modalContainer {
+        display: none;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        background-color: #000000a4;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+    }
+    .modalContainer.show {
+        display: flex;
+    }
+
+/* Generals */
+
+/* HOME */
+    .Home {
+        text-align: center;
+        padding: 10px;
+    }
+    .Home_title {
+        color: var(--titleTextColor);
+        font-family: var(--fontTitle);
+        font-size: 2em;
+        font-weight: 400;
+        letter-spacing: 2px;
+        margin-bottom: 1.2em;
+        text-transform: capitalize;
+    }
+    .Home_title strong{
+        color: var(--titleSecondTextColor);
+    }
+    .Home_startBT {
+        background-color: var(--backgroundBT);
+        border: none;
+        border-top: 2px inset black;
+        border-right: 2px inset black;
+        /* border: solid black; */
+        border-radius: 8px;
+        box-shadow: 1px 1px 5px 1px black;
+        color: var(--textNavPresenColor);
+        font-weight: 600;
+        font-size: 1.6em;
+        padding: 0.6em;
+        outline: none;
+        transition: 300ms;
+        animation-name: Pulse;
+        animation-timing-function: ease-in-out;
+        animation-iteration-count: infinite;
+        animation-duration: 2s;
+    }
+    .Home_startBT:hover {
+        animation-name: none;
+    }
+    .Home_startBT:active {
+        transform: scale(.8);
+    }
+    .Home_description {
+        font-size: 1.2em;
+        font-family: monospace;
+        font-weight: 600;
+        line-height: 1.5;
+        margin-bottom: 10px;
+    }
+
+    .Home_modal {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transform: translateY(-1000px);
+        width: 60%;
+        height: 40%;
+        background-color: white;
+        box-shadow: 1px 1px 3px 1px black;
+        border-radius: 10px;
+        animation-fill-mode: forwards;
+        animation-duration: 1s;
+        animation-timing-function: ease-in-out;
+    }
+    .Home_modal h2 {
+        margin: 10px 0;
+        font-size: 1.5em;
+    }
+    .Home_modal p {
+        margin-bottom: 10px;
+        font-size: .9em;
+    }
+    .Home_modal input {
+        margin: 5px;
+        border-radius: 5px;
+        padding: .5em;
+        font-weight: 600;
+        font-size: 1em;
+        width: 40%;
+    }
+    .Home_modal input::placeholder {
+        font-weight: 600;
+        font-size: 1em;
+    }
+    .Home_modal button {
+        display: inline-block;
+        padding: 5px;
+        font-weight: 600;
+        color: white;
+        border-radius: 3px;
+        border: none;
+        outline: none;
+        transition: 200ms;
+    }
+    .Home_modal_RightBT {
+        background-color: var(--SecondbackgroundBT);
+    }
+    .Home_modal_WrongBT {
+        background-color: var(--thirdbackgroundBT);
+    }
+    .Home_modal button:active {
+        transform: scale(.8)
+    }
+    .Home_img {
+        display: block;
+        margin: 0 auto;
+        width: 40%;
+        opacity: 0;
+        animation-duration: 2s;
+        animation-delay: .4s;
+        animation-fill-mode: forwards;
+    }
+
+/* HOME */
+
+/* PODCAST */
+.Podcast {
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    background: var(--radialBackground);
+}
+.Podcast h1 {
+    font-family: var(--fontTitle);
+    color: var(--textNavPresenColor);
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    font-weight: 400;
+}
+.Podcast p {
+    font-size: 1.2em;
+    font-size: 400;
+    margin-top: 20px;
+    color: white;
+}
+
+/* PODCAST */
+
+/* Animations */
+
+@keyframes ModalIn {
+    0% {
+        transform: translateY(-1000px);
+    }
+    30%{
+        transform: translateY(10px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+    70% {
+        transform: translateY(5px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+@keyframes  ModalOut {
+    0% {
+        transform: translateY(0);
+    }
+    30%{
+        transform: translateY(10px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+    70% {
+        transform: translateY(5px);
+    }
+    100% {
+        transform: translateY(-1000px);
+    }
+}
+
+@keyframes Pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(.5);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes FadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+@keyframes FadeOut {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+/* Animations */

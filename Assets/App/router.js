@@ -1,5 +1,5 @@
 import Loader from "../Templates/Loader.js";
-
+import ListenersAdder from "./ListenersAdder.js";
 
 class Router {
     constructor(ALL_ROUTES) {
@@ -21,8 +21,11 @@ class Router {
             const target = document.querySelector("#app")
             target.innerHTML = Loader();
 
-            setTimeout(() => target.innerHTML =  matchedRoute.template, 3000)
-            
+            setTimeout(() => {
+                target.innerHTML =  matchedRoute.template, 3000;
+                ListenersAdder(Rpath);
+            }, 3000)
+
         }else
             return;
     }
