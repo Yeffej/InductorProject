@@ -4,8 +4,15 @@ import ListenersAdder from "./ListenersAdder.js";
 class Router {
     constructor(ALL_ROUTES) {
         this.routes = ALL_ROUTES
-        this.LoadInitialRoute();
         this.initialRoute = "/#/"
+        if (window.location.pathname !== "/") {
+            this._primaryRoute = window.location.pathname;
+            
+        }else {
+            this._primaryRoute = "";  
+            
+        }
+        this.LoadInitialRoute();
     }
     LoadInitialRoute() {
         window.history.pushState({}, "", this.initialRoute)
@@ -17,7 +24,8 @@ class Router {
         console.log(Rpath)
         const matchedRoute = this.matchRouteWithRoutes(Rpath)
         if(matchedRoute){
-            window.history.pushState({}, "", "/#" + Rpath)
+            const finalRoute = `${this._primaryRoute}/#${Rpath}`
+            window.history.pushState({}, "", finalRoute)
             const target = document.querySelector("#app")
             target.innerHTML = Loader();
 
