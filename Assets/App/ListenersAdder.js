@@ -1,8 +1,12 @@
 import PageManager from "./pageManager.js";
 import CustomAlert from "../Extensions/CustomAlert.js";
+
+// Variables que necesito que sean globales dentro de la función:
 const Manager = new PageManager();
+let AlertTimeout;
 
 function ListenersAdder(path) {
+
     if(path === "/") {
         const startBt = document.querySelector("#Home_startBT")
         const CancelModal = document.getElementById("modalCancel")
@@ -19,10 +23,12 @@ function ListenersAdder(path) {
             if(e.animationName == "ModalOut")
                 modalContainer.classList.remove("show");
         })
-        setTimeout(()=> {
+
+        // Mostrando un alert para preguntarle al usuario.
+        AlertTimeout = setTimeout(()=> {
             const ConfirmationsBT = CustomAlert({
                 type: "info",
-                title: "Bienvenido",
+                title: "Bienvenido al Home",
                 text: `¿Te gustaría ver la imagen de un inductor? Responde: Ok | o mejor la ves cuando 
                 hablemos del tema profundida? Responde: No`,
                 confirmation: true,
@@ -46,18 +52,19 @@ function ListenersAdder(path) {
             })
 
         }, 5000)
+
     }
     if(path === "/leyes") {
-
+        clearTimeout(AlertTimeout)
     }
     if(path === "/conceptos") {
-
+        clearTimeout(AlertTimeout)
     }
     if(path === "/parametros") {
-
+        clearTimeout(AlertTimeout)
     }
     if(path === "/podcast") {
-
+        clearTimeout(AlertTimeout)
     }
 }
 
