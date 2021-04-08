@@ -10,6 +10,8 @@ function ListenersAdder(path) {
     if(path === "/") {
         const startBt = document.querySelector("#Home_startBT")
         const CancelModal = document.getElementById("modalCancel")
+        const continueModal = document.getElementById("modalContinue");
+        const lawsPage = document.getElementById("page-laws")
         const modal = document.querySelector("#Home_modal");
 
         startBt.addEventListener("click", ()=> {
@@ -23,6 +25,8 @@ function ListenersAdder(path) {
             if(e.animationName == "ModalOut")
                 modalContainer.classList.remove("show");
         })
+
+        continueModal.addEventListener("click", ()=> lawsPage.click())
 
         // Mostrando un alert para preguntarle al usuario.
         AlertTimeout = setTimeout(()=> {

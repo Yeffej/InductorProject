@@ -3,11 +3,11 @@ import ALL_ROUTES from "../Routes/routes.js"
 
 const pageRouter = new Router(ALL_ROUTES)
 const navigationBTs = GetNavBTs();
-const hrefs = ["/#/", "/#/leyes", "/#/conceptos", "/#/parametros", "/#/podcast"]
+const hrefs = ["#/", "#/leyes", "#/conceptos", "#/parametros", "#/podcast"]
 
 window.addEventListener("hashchange", (e)=> {
     e.preventDefault()
-    pageRouter.loadRoute(window.location.hash)
+    pageRouter.loadRoute(window.location.href)
 })
 
 
@@ -18,7 +18,7 @@ function GetNavBTs() {
 
 function SetNavBTsHref() {
     for(let i = 0; i < hrefs.length; i++) {
-        navigationBTs[i].href = `${pageRouter.primaryRoute}${hrefs[i]}`
+        navigationBTs[i].href = `${hrefs[i]}`
     }
 }
 

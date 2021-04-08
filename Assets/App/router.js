@@ -14,16 +14,17 @@ class Router {
         this.LoadInitialRoute();
     }
     LoadInitialRoute() {
-        window.history.pushState({}, "", this.initialRoute)
-        const actualPath =  window.location.pathname
-        this.loadRoute(actualPath);
+        const routeInt = `${window.location.pathname}${this.initialRoute}`
+        window.history.pushState({}, "", routeInt)
+        this.loadRoute(routeInt);
     }
     loadRoute(Path) {
-        const Rpath = Path.replace(/^#/, "")
+        const Rpath = Path.replace(/^.*#/, "")
         console.log(Rpath)
+        console.log(Path)
         const matchedRoute = this.matchRouteWithRoutes(Rpath)
         if(matchedRoute){
-            const finalRoute = `${this.primaryRoute}/#${Rpath}`
+            const finalRoute = `#${Rpath}`
             window.history.pushState({}, "", finalRoute)
             const target = document.querySelector("#app")
             target.innerHTML = Loader();

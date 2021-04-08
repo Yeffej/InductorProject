@@ -2,7 +2,6 @@ class pageManager {
     ToggleModal(type) {
         if(type === "home") {
             const modalContainer = document.querySelector("#modalContainer");
-            console.log(modalContainer)
             const modal = document.querySelector("#Home_modal");
             if (modal.style.animationName === "ModalOut" || modal.style.animationName === "") {
                 modalContainer.classList.add("show")
