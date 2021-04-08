@@ -6,11 +6,10 @@ class Router {
         this.routes = ALL_ROUTES
         this.initialRoute = "/#/"
         if (window.location.pathname !== "/") {
-            this._primaryRoute = window.location.pathname;
+            this.primaryRoute = window.location.pathname.split("/").join("");
             
         }else {
-            this._primaryRoute = "";  
-            
+            this.primaryRoute = "";  
         }
         this.LoadInitialRoute();
     }
@@ -24,7 +23,7 @@ class Router {
         console.log(Rpath)
         const matchedRoute = this.matchRouteWithRoutes(Rpath)
         if(matchedRoute){
-            const finalRoute = `${this._primaryRoute}/#${Rpath}`
+            const finalRoute = `${this.primaryRoute}/#${Rpath}`
             window.history.pushState({}, "", finalRoute)
             const target = document.querySelector("#app")
             target.innerHTML = Loader();
