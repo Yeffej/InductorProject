@@ -4,6 +4,7 @@ import CustomAlert from "../Extensions/CustomAlert.js";
 // Variables que necesito que sean globales dentro de la función:
 const Manager = new PageManager();
 let AlertTimeout;
+let UserName = "";
 
 function ListenersAdder(path) {
 
@@ -13,6 +14,18 @@ function ListenersAdder(path) {
         const continueModal = document.getElementById("modalContinue");
         const lawsPage = document.getElementById("page-laws")
         const modal = document.querySelector("#Home_modal");
+        const nameGetter = document.querySelector("#NameGetter")
+        const formGetter = document.querySelector("#HomeModalform")
+        UserName = "";
+
+        function alertErrorName() {
+            CustomAlert({
+                type: "error",
+                title: "Por favor Ingresa tu Nombre",
+                text: `No se ha ingresado ningún nombre o alias, por favor ingresar 
+                uno para poder continuar.`,
+            })
+        }
 
         startBt.addEventListener("click", ()=> {
             Manager.ToggleModal("home")
@@ -26,7 +39,29 @@ function ListenersAdder(path) {
                 modalContainer.classList.remove("show");
         })
 
-        continueModal.addEventListener("click", ()=> lawsPage.click())
+        continueModal.addEventListener("click", ()=>  {
+            console.log(nameGetter.value)
+            if(UserName) {
+                lawsPage.click()
+                return;
+            }
+            alertErrorName()
+        })
+
+        formGetter.addEventListener("submit", (e)=> {
+            e.preventDefault();
+            if(nameGetter.value) {
+                UserName =  nameGetter.value
+                formGetter.style.animationName = "FadeOut"
+                CustomAlert({
+                    type: "success",
+                    title: "Guardado Exitoso",
+                    text: `Gracias por ingresar su nombre o alias, el cual ha sido guardado
+                    con éxito, ya puedes continuar.`,
+                })
+            }else 
+                alertErrorName();
+        })
 
         // Mostrando un alert para preguntarle al usuario.
         AlertTimeout = setTimeout(()=> {
@@ -60,9 +95,45 @@ function ListenersAdder(path) {
     }
     if(path === "/leyes") {
         clearTimeout(AlertTimeout)
+
+        const ContinueBT = document.querySelector(".Laws_NextBT")
+        const Concepts = document.getElementById("page-concepts")
+        const introShower = document.querySelector("#Laws_ShowWriter")
+        const LawsIntro = document.querySelector(".Laws_intro")
+        const LawsWritters = getLawsWritters();
+        const Content = document.querySelector(".Laws_content")
+        
+        function getLawsWritters() {
+            const writters = document.querySelectorAll(".LawsWritter_son")
+            return [...writters];
+        }
+
+        ContinueBT.addEventListener("click", ()=> {
+            ContinueBT.style.animationName = "RotateOut"
+        })
+        ContinueBT.addEventListener("animationend", ()=> Concepts.click() )
+
+        introShower.addEventListener("click", ()=> {
+            LawsIntro.style.animationName = "FadeIn";
+        })
+        LawsIntro.addEventListener("animationend", ()=> {
+            setTimeout(()=> {
+                LawsWritters.forEach(wrt => {
+                    wrt.style.animationName = "WritterText, WritterTab";
+                });
+            }, 2000) 
+        })
+        LawsWritters[2].addEventListener("animationend", ()=> {
+            setTimeout(()=> {
+                Content.style.animationName = "FadeIn";
+            }, 1500) 
+        })
+        
+
     }
     if(path === "/conceptos") {
         clearTimeout(AlertTimeout)
+
     }
     if(path === "/parametros") {
         clearTimeout(AlertTimeout)
@@ -73,3 +144,5 @@ function ListenersAdder(path) {
 }
 
 export default ListenersAdder;
+
+export { UserName }

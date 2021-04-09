@@ -11,10 +11,12 @@ const Home = () => {
         <div class="Home_modal" id="Home_modal">
             <h2>Titulo Modal</h2>
             <p>¡Perfecto!, has dado el primer paso para aprender sobre este componente eléctrico llamado <strong>inductor</strong> el cual muy usado en la actualidad, pero antes de: dejanos tu nombre debajo por favor, y presiona continuar para seguir en este trayecto 😉</p>
-            <input type="text" id="NameGetter" placeholder="Ingresa tu nombre">
+            <form action="" id="HomeModalform">
+                <input type="text" id="NameGetter" placeholder="Ingresa tu nombre">
+            </form>
             <div> 
-                <button id="modalContinue" class="Home_modal_RightBT">Continuar</button>
-                <button id="modalCancel" class="Home_modal_WrongBT">Cancelar</button>
+                <button type="button" id="modalContinue" class="Home_modal_RightBT">Continuar</button>
+                <button type="button" id="modalCancel" class="Home_modal_WrongBT">Cancelar</button>
             </div>
         </div>
     </div>

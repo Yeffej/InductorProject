@@ -35,6 +35,7 @@ body {
     padding: 5px;
     background-color: var(--navBackgroundColor);
     text-align: center;
+    height: 100vh;
 }
 .Navigation_Presentation {
     font-size: 1.5em;
@@ -58,7 +59,7 @@ body {
     flex-direction: column;
     align-items: center;
     width: 100%;
-    height: calc(100vh - 10px);
+    height: 100vh;
 }
 
 /* NAVIGATION BAR AND MAIN */
@@ -154,13 +155,18 @@ body {
         margin-bottom: 10px;
         font-size: .9em;
     }
+    .Home_modal form {
+        animation-fill-mode: forwards;
+        animation-duration: 1.5s;
+    }
     .Home_modal input {
         margin: 5px;
         border-radius: 5px;
         padding: .5em;
         font-weight: 600;
         font-size: 1em;
-        width: 40%;
+        width: 100%;
+        
     }
     .Home_modal input::placeholder {
         font-weight: 600;
@@ -188,7 +194,7 @@ body {
     .Home_img {
         display: block;
         margin: 0 auto;
-        width: 40%;
+        width: 50%;
         opacity: 0;
         animation-duration: 2s;
         animation-delay: .4s;
@@ -196,6 +202,102 @@ body {
     }
 
 /* HOME */
+
+/* LAWS */
+.Laws {
+    width: 100%;
+    text-align: center;
+}
+.Laws_title {
+    font-size: 2.5em;
+    font-family: var(--fontTitle);
+    font-weight: 400;
+    text-shadow: 1px 2px 4px white;
+    color: var(--titleSecondTextColor);
+    background: var(--radialBackground);
+    margin-bottom: 10px;
+    padding: 10px;
+}
+.Laws_greeting {
+    font-size: 1.3em;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+.Laws_greeting a {
+    text-decoration: none;
+    font-family: fantasy;
+    font-weight: 900;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+    color: var(--SecondbackgroundBT);
+    cursor: pointer;
+}
+.Laws_greeting a:hover {
+    color: var(--navBackgroundColor);
+}
+.Laws_intro {
+    text-align: start;
+    margin-bottom: 2em;
+    opacity: 0;
+    animation-duration: 1.5s;
+    animation-fill-mode: forwards;
+}
+.Laws_intro_descrip {
+    font-size: 1em;
+    font-weight: 600;
+    margin-bottom: 1em;
+    
+}
+.Laws_intro ol {
+    margin-left: 2em;
+}
+.LawsWritter_son {
+    margin-bottom: .5em;
+    font-family: cursive;
+    font-weight: 600;
+    color: var(--titleTextColor);
+    width: 0em; /* max: 8em*/ 
+    white-space: nowrap;
+    overflow: hidden;
+    animation-duration: 3s, 1s;
+    animation-fill-mode: forwards, none;
+    animation-timing-function: ease, steps(10);
+    animation-iteration-count: 1, infinite;
+}
+.LawsWritter_son:nth-of-type(2) {
+    animation-delay: 3s;
+}
+.LawsWritter_son:nth-of-type(3) {
+    animation-delay: 6s;
+}
+.Laws_content {
+    opacity: 0;
+    animation-duration: 1.5s;
+    animation-fill-mode: forwards;
+}
+.Laws_content article {
+    margin-bottom: 5em;
+}
+.Laws_content article img {
+    width: 50%;
+    margin: 10px;
+}
+.Laws_NextBT {
+    font-weight: 600;
+    font-size: 1.3em;
+    text-align: end;
+    margin: 5px;
+    padding: .5em;
+    border-radius: 8px;
+    color: var(--textNavPresenColor);
+    background-color: var(--navBackgroundColor);
+    outline: none;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+}
+
+
+/* LAWS */
 
 /* PODCAST */
 .Podcast {
@@ -283,6 +385,33 @@ body {
     }
     100% {
         opacity: 0;
+    }
+}
+@keyframes RotateOut {
+    0% {
+        transform: scale(1) rotate(0deg);
+    }
+    100% {
+        transform: scale(0) rotate(720deg);
+    }
+}
+@keyframes WritterText {
+    0% {
+        width: 0em;
+    }
+    100% {
+        width: 8em;
+    }
+}
+@keyframes WritterTab {
+    0% {
+        border-right: 3px solid black;
+    }
+    50% {
+        border-right: none;
+    }
+    100% {
+        border-right: 3px solid black;
     }
 }
 

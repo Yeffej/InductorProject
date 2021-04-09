@@ -30,7 +30,7 @@ class Router {
             target.innerHTML = Loader();
 
             setTimeout(() => {
-                target.innerHTML =  matchedRoute.template, 3000;
+                target.innerHTML =  matchedRoute.template();
                 ListenersAdder(Rpath);
             }, 3000)
 

@@ -8,27 +8,27 @@ const ALL_ROUTES = [
     {
         name: "Home",
         url: "/",
-        template: Home(),
+        template: ()=> Home(),
     },
     {
         name: "Leyes",
         url: "/leyes",
-        template: Laws(),
+        template: ()=> Laws(),
     },
     {
         name: "Conceptos",
         url: "/conceptos",
-        template: Concepts(),
+        template: ()=> Concepts(),
     },
     {
         name: "Parametros",
         url: "/parametros",
-        template: parameters(),
+        template: ()=> parameters(),
     },
     {
         name: "Podcast",
         url: "/podcast",
-        template: Podcast(),
+        template: ()=> Podcast(),
     },
 ]
 
