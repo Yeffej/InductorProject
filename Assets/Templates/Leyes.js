@@ -39,7 +39,7 @@ const Laws = () => {
                 <p>Esta ley relaciona cambios producidos en el campo eléctrico por un conductor con la propiedad de variar el flujo magnético, y afirma que las tensiones o voltajes aplicadas a un conductor generan una fuerza electro motriz (fem) cuyo campo magnético se opone a toda variación de la corriente original que lo produjo. Esto quiere decir en palabras simples que: <strong>cuando generemos una corriente eléctrica mediante un campo magnético, como lo que hace un generador, la dirección de la corriente inducida es contraria al campo que la genara lo que genera un campo magnético que se opone al campo magnético que genera la corriente.</strong></p>
             </article>
         </div>
-        <button class="Laws_NextBT">Continuar Con Conceptos</button>
+        <button class="Laws_NextBT nextBT">Continuar Con Conceptos</button>
 
     </section>
     

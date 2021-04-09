@@ -133,6 +133,49 @@ function ListenersAdder(path) {
     }
     if(path === "/conceptos") {
         clearTimeout(AlertTimeout)
+        const plusBTs = document.querySelectorAll(".Concepts_art_showBT")
+        const infoDisplays = document.querySelectorAll(".Concepts_art_Info")
+        const ContinueBT = document.querySelector(".Concepts_NextBT")
+        const Parameters = document.getElementById("page-parameters")
+
+        plusBTs[0].addEventListener("click", ()=> {
+            if(!plusBTs[0].style.animationName || 
+                plusBTs[0].style.animationName === "RotatePlusIn" ) {
+
+                plusBTs[0].style.animationName = "RotatePlusOut"
+                infoDisplays[0].style.maxHeight = "600px"
+            } else {
+                plusBTs[0].style.animationName = "RotatePlusIn"
+                infoDisplays[0].style.maxHeight = "0px"
+            }
+        })
+        plusBTs[1].addEventListener("click", ()=> {
+            if(!plusBTs[1].style.animationName || 
+                plusBTs[1].style.animationName === "RotatePlusIn" ) {
+
+                plusBTs[1].style.animationName = "RotatePlusOut"
+                infoDisplays[1].style.maxHeight = "600px"
+            } else {
+                plusBTs[1].style.animationName = "RotatePlusIn"
+                infoDisplays[1].style.maxHeight = "0px"
+            }
+        })
+        plusBTs[2].addEventListener("click", ()=> {
+            if(!plusBTs[2].style.animationName || 
+                plusBTs[2].style.animationName === "RotatePlusIn" ) {
+
+                plusBTs[2].style.animationName = "RotatePlusOut"
+                infoDisplays[2].style.maxHeight = "600px"
+            } else {
+                plusBTs[2].style.animationName = "RotatePlusIn"
+                infoDisplays[2].style.maxHeight = "0px"
+            }
+        })
+
+        ContinueBT.addEventListener("click", ()=> {
+            ContinueBT.style.animationName = "RotateOut"
+        })
+        ContinueBT.addEventListener("animationend", ()=> Parameters.click() )
 
     }
     if(path === "/parametros") {
@@ -140,6 +183,37 @@ function ListenersAdder(path) {
     }
     if(path === "/podcast") {
         clearTimeout(AlertTimeout)
+        const audioPodCast = document.querySelector("iframe")
+
+        audioPodCast.addEventListener("load", ()=> {
+            setTimeout(()=> {
+                CustomAlert({
+                    type: "success",
+                    title: "Carga completa",
+                    text: `El audio se ha cargado correctamente, gracias por esperar.`,
+                })
+                audioPodCast.style.animationName = "FadeIn";
+            }, 2000)
+            
+        })
+        audioPodCast.addEventListener("error", (e)=> {
+            console.log(e)
+            CustomAlert({
+                type: "error",
+                title: "Carga incompleta",
+                text: `El audio no se pudo cargar, por favor recarge la pagina o revise su
+                conexión a internet.`,
+            })
+        })
+
+        CustomAlert({
+            type: "warning",
+            title: "Solicitando audio",
+            text: `El audio se esta cargando, por favor espera unos segundos hasta 
+            completar esta acción.`,
+        })
+
+
     }
 }
 

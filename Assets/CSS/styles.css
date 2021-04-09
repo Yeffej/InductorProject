@@ -9,11 +9,13 @@
     --textNavPresenColor: #eeefff;
     --textNavBTColor: #6b048d;
     --textNavBTColorHover: #2111FF; 
+    --textColorS: #e89647;
     --navBackgroundColor: #111111;
     --backgroundBT: #02404e;
     --radialBackground: radial-gradient(circle, rgba(2, 0, 36, 1) 0%, rgba(20, 20, 43, 1) 50%, rgba(0, 0, 0, 1) 100%);
     --SecondbackgroundBT: #0e9069;
     --thirdbackgroundBT: #e22706;
+    --ConcepsBackground: linear-gradient(to left, rgb(0, 0, 0) 0%, rgb(10, 1, 53) 50%, rgb(0, 0, 0)100%);
 }
 * {
     margin: 0;
@@ -79,7 +81,17 @@ body {
     .modalContainer.show {
         display: flex;
     }
-
+    .nextBT {
+        font-weight: 600;
+        font-size: 1.3em;
+        text-align: end;
+        margin: 5px;
+        padding: .5em;
+        border-radius: 8px;
+        outline: none;
+        animation-duration: 2s;
+        animation-fill-mode: forwards;
+    }
 /* Generals */
 
 /* HOME */
@@ -283,21 +295,78 @@ body {
     margin: 10px;
 }
 .Laws_NextBT {
-    font-weight: 600;
-    font-size: 1.3em;
-    text-align: end;
-    margin: 5px;
-    padding: .5em;
-    border-radius: 8px;
     color: var(--textNavPresenColor);
     background-color: var(--navBackgroundColor);
-    outline: none;
-    animation-duration: 2s;
-    animation-fill-mode: forwards;
+}
+/* LAWS */
+
+
+/* Concepts */
+.Concepts {
+    background: var(--ConcepsBackground);
+    color: var(--textColorS);
+    text-align: center;
+}
+.Concepts_title {
+    font-size: 2.5em;
+    font-family: var(--fontTitle);
+    font-weight: 600;
+    margin: 1em 0;
+    text-decoration: underline;
+}
+.Concepts_greeting {
+    font-size: 1.4em;
+    margin-bottom: 1em;
+    font-weight: 600;
+}
+.Concepts_art {
+    margin-bottom: 2em;
 }
 
+/* Article diplay by plus Botton */
+.Concepts_art_showBT {
+    display: inline-block;
+    font-size: 2.15em;
+    padding: 0 10px;
+    margin: 0 8px 1em 0;
+    background-color: var(--titleTextColor);
+    border: solid 1px black;
+    border-radius: 5px;
+    box-shadow: 1px 1px 5px 1px white;
+    white-space: nowrap;
+    outline: none;
+    vertical-align: sub;
+    animation-fill-mode: forwards;
+    animation-duration: 2s;
+}
+.Concepts_art h2{
+    display: inline-block;
+    margin-bottom: 1em;
+}
+.Concepts_art_Info {
+    overflow: hidden;
+    max-height: 0px;
+    transition: max-height 3s ease;
+}
+.Concepts_art_Info img {
+    width: 70%;
+    max-width: 250px;
+}
+.Concepts_NextBT {
+    background-color: var(--backgroundBT);
+    color: var(--textNavPresenColor);
+    border: none;
+}
 
-/* LAWS */
+/* Concepts */
+
+
+/* Parameters */
+.Parameters {
+    
+}
+
+/* Parameters */
 
 /* PODCAST */
 .Podcast {
@@ -318,6 +387,12 @@ body {
     font-size: 400;
     margin-top: 20px;
     color: white;
+}
+.Podcast iframe {
+    opacity: 0;
+    animation-duration: 2s;
+    animation-delay: 1s;
+    animation-fill-mode: forwards;
 }
 
 /* PODCAST */
@@ -414,5 +489,22 @@ body {
         border-right: 3px solid black;
     }
 }
+@keyframes RotatePlusIn {
+    0% {
+        transform: rotate(405deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}
+@keyframes RotatePlusOut {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(405deg);
+    }
+}
+
 
 /* Animations */
