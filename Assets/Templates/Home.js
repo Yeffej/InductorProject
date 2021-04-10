@@ -9,7 +9,7 @@ const Home = () => {
 
     <div class="modalContainer" id="modalContainer">
         <div class="Home_modal" id="Home_modal">
-            <h2>Titulo Modal</h2>
+            <h2>Inductores Eléctricos</h2>
             <p>¡Perfecto!, has dado el primer paso para aprender sobre este componente eléctrico llamado <strong>inductor</strong> el cual muy usado en la actualidad, pero antes de: dejanos tu nombre debajo por favor, y presiona continuar para seguir en este trayecto 😉</p>
             <form action="" id="HomeModalform">
                 <input type="text" id="NameGetter" placeholder="Ingresa tu nombre">

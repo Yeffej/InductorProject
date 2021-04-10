@@ -28,7 +28,7 @@ const Concepts = () => {
             <h2>¿Como se comportan los inductores con estimulo CD (corriente directa)?</h2>
             <p class="Concepts_art_Info">Los inductores estimulados con corriente directa se comportan como si fueran un corto-circuito una vez el campo magnetico generado por el paso de la corriente alcance su máximo crecimiento.</p>
         </article>
-        <button class="Concepts_NextBT nextBT">Continuar Con Conceptos</button>
+        <button class="Concepts_NextBT nextBT">Continuar Con Parametros</button>
     </section>
     `)
 }

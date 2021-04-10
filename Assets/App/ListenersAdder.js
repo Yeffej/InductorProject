@@ -180,6 +180,10 @@ function ListenersAdder(path) {
     }
     if(path === "/parametros") {
         clearTimeout(AlertTimeout)
+        const hideModalBT = document.querySelector("#modalOkBT")
+
+        setTimeout(()=> Manager.ToggleModal("parameters"), 2000)
+        hideModalBT.addEventListener("click", ()=> Manager.ToggleModal("parameters"))
     }
     if(path === "/podcast") {
         clearTimeout(AlertTimeout)
