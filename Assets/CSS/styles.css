@@ -402,6 +402,7 @@ body {
     border-radius: 8px;
     margin:  0 auto 1em auto;
     outline: none;
+    animation-name: Pulse;
     animation-duration: 1.5s;
     animation-iteration-count: infinite;
     animation-fill-mode: forwards;

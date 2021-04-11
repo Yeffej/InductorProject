@@ -175,7 +175,7 @@ function ListenersAdder(path) {
     if(path === "/parametros") {
         clearTimeout(AlertTimeout)
         const hideModalBT = document.querySelector("#modalOkBT")
-        const ByeModalBt = document.querySelector(".Parameters_byeBT")
+        const ByeModalBt = document.querySelector(".Parameters_byeBT") // button to show the byeModal
         const ContinueBT = document.querySelector(".Parameters_NextBT")
         const Podcast = document.getElementById("page-podcast")
         const closeByeModal = document.querySelector("#modalByeBT")
@@ -186,7 +186,10 @@ function ListenersAdder(path) {
         setTimeout(()=> Manager.ToggleModal("parameters"), 1000)
         hideModalBT.addEventListener("click", ()=> Manager.ToggleModal("parameters"))
 
-        ByeModalBt.addEventListener("click", ()=> Manager.ToggleFinalModal())
+        ByeModalBt.addEventListener("click", ()=> {
+            ByeModalBt.style.animationName = "None"
+            Manager.ToggleFinalModal()
+        })
 
         ContinueBT.addEventListener("click", ()=> {
             ContinueBT.removeEventListener("mouseover", quitPulseAnimation)
