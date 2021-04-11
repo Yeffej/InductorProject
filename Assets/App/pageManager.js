@@ -3,6 +3,12 @@ class pageManager {
         if(type === "home") {
             const modalContainer = document.querySelector("#modalContainer");
             const modal = document.querySelector("#Home_modal");
+
+            modal.addEventListener("animationend", (e)=>{
+                if(e.animationName == "ModalOut")
+                    modalContainer.classList.remove("show");
+            })
+
             if (modal.style.animationName === "ModalOut" || modal.style.animationName === "") {
                 modalContainer.classList.add("show")
                 modal.style.animationName = "ModalIn"
@@ -12,6 +18,12 @@ class pageManager {
         }else if(type === "parameters") {
             const modalContainer = document.querySelector("#ParametersModal-hi");
             const modal = document.querySelector(".Parameters_ModalGreeting");
+
+            modal.addEventListener("animationend", (e)=>{
+                if(e.animationName == "ModalOut")
+                    modalContainer.classList.remove("show");
+            })
+
             if (modal.style.animationName === "ModalOut" || modal.style.animationName === "") {
                 modalContainer.classList.add("show")
                 modal.style.animationName = "ModalIn"
@@ -29,9 +41,15 @@ class pageManager {
         const HomeImg = document.querySelector("#HomeIMG");
         HomeImg.style.animationName = "FadeIn";
     }
-    showFinalModal() {
-        const modalContainer = document.querySelector("#ParametersModal-hi");
-        const modal = document.querySelector(".Parameters_ModalGreetingl");
+    ToggleFinalModal() {
+        const modalContainer = document.querySelector("#ParametersModal-bye");
+        const modal = document.querySelector(".Parameters_ModalBye");
+
+        modal.addEventListener("animationend", (e)=>{
+            if(e.animationName == "ModalOut")
+                modalContainer.classList.remove("show");
+        })
+
         if (modal.style.animationName === "ModalOut" || modal.style.animationName === "") {
             modalContainer.classList.add("show")
             modal.style.animationName = "ModalIn"

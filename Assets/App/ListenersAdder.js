@@ -13,7 +13,6 @@ function ListenersAdder(path) {
         const CancelModal = document.getElementById("modalCancel")
         const continueModal = document.getElementById("modalContinue");
         const lawsPage = document.getElementById("page-laws")
-        const modal = document.querySelector("#Home_modal");
         const nameGetter = document.querySelector("#NameGetter")
         const formGetter = document.querySelector("#HomeModalform")
         UserName = "";
@@ -23,7 +22,7 @@ function ListenersAdder(path) {
                 type: "error",
                 title: "Por favor Ingresa tu Nombre",
                 text: `No se ha ingresado ningún nombre o alias, por favor ingresar 
-                uno para poder continuar.`,
+                uno para poder continuar o <strong>recuerda dar Enter</strong> si has ingresado un valor.`,
             })
         }
 
@@ -32,11 +31,6 @@ function ListenersAdder(path) {
         })
         CancelModal.addEventListener("click", ()=> {
             Manager.ToggleModal("home")
-        })
-
-        modal.addEventListener("animationend", (e)=>{
-            if(e.animationName == "ModalOut")
-                modalContainer.classList.remove("show");
         })
 
         continueModal.addEventListener("click", ()=>  {
@@ -181,9 +175,35 @@ function ListenersAdder(path) {
     if(path === "/parametros") {
         clearTimeout(AlertTimeout)
         const hideModalBT = document.querySelector("#modalOkBT")
+        const ByeModalBt = document.querySelector(".Parameters_byeBT")
+        const ContinueBT = document.querySelector(".Parameters_NextBT")
+        const Podcast = document.getElementById("page-podcast")
+        const closeByeModal = document.querySelector("#modalByeBT")
 
-        setTimeout(()=> Manager.ToggleModal("parameters"), 2000)
+        const quitPulseAnimation = ()=>  ContinueBT.style.animationName = "none";
+        const setPulseAnimation = ()=>  ContinueBT.style.animationName = "Pulse"
+
+        setTimeout(()=> Manager.ToggleModal("parameters"), 1000)
         hideModalBT.addEventListener("click", ()=> Manager.ToggleModal("parameters"))
+
+        ByeModalBt.addEventListener("click", ()=> Manager.ToggleFinalModal())
+
+        ContinueBT.addEventListener("click", ()=> {
+            ContinueBT.removeEventListener("mouseover", quitPulseAnimation)
+            ContinueBT.removeEventListener("mouseout", setPulseAnimation)
+
+            ContinueBT.style.animationName = "RotateOut"
+            ContinueBT.style.animationIterationCount = "1"
+
+        })
+        ContinueBT.addEventListener("animationend", ()=> Podcast.click() )
+
+        closeByeModal.addEventListener("click", ()=> {
+            Manager.ToggleFinalModal()
+            ContinueBT.style.animationName = "Pulse"
+            ContinueBT.addEventListener("mouseover", quitPulseAnimation)
+            ContinueBT.addEventListener("mouseout", setPulseAnimation)
+        })
     }
     if(path === "/podcast") {
         clearTimeout(AlertTimeout)

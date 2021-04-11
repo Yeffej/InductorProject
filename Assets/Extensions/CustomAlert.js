@@ -27,6 +27,7 @@ const ChargeCSS = () => {
         top: 0;
         right: 0;
         width: 35vw;
+        min-width: 230px;
         height: auto;
         border-radius: 1.5vw;
         margin: 5px;
@@ -77,6 +78,15 @@ const ChargeCSS = () => {
         100% {
             transform: translateX(100%);
         }
+    }
+
+    @media screen and (max-width: 720px){
+        .CustomAlert p {
+            font-size: .75em;
+        }
+        .CustomAlert h2 {
+            font-size: .9em;
+        } 
     }
 
 </style>
