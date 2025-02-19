@@ -7,9 +7,10 @@ const ChargeHTML = (title = "", text = "", Confirmation = false) => {
     const confirmationOn = `
     <h2>${title}</h2>
     <p>${text}</p>
-    <div class="CustomAlert_bts"></div>
-    <button id="CustomModal-OK" >Ok</button>
-    <button id="CustomModal-NO" >No</button>
+    <div class="CustomAlert_bts">
+        <button id="CustomModal-OK" >Ok</button>
+        <button id="CustomModal-NO" >No</button>
+    </div>
     `
     if(Confirmation) {
         return confirmationOn;
@@ -37,16 +38,16 @@ const ChargeCSS = () => {
         animation: GetIn 1s forwards ease-in-out;
     }
     .CustomAlert--red {
-        background-color: #ff0000;
+        background-color: #7c0707;
     }
     .CustomAlert--yellow {  
-        background-color: #ffff00; 
+        background-color: #89890e; 
     }
     .CustomAlert--green {   
-        background-color: #00ff00;
+        background-color: #064706;
     }
     .CustomAlert--blue {
-        background-color: #0000ff;
+        background-color: #4f1262;
     }
     .CustomAlert h2 {
         margin-top: 0;
@@ -58,6 +59,12 @@ const ChargeCSS = () => {
     .CustomAlert_bts {
         display: flex;
         justify-content: space-evenly;
+        margin: 8px 0;
+    }
+    .CustomAlert_bts button {
+        height: 30px;
+        min-width: 40px;
+        cursor: pointer;
     }
     .CustomAlert i {
         margin-right: 5px;
@@ -95,6 +102,14 @@ const ChargeCSS = () => {
 }
 
 
+/**
+ * CustomAlert - A function that Configures and renders a Custom Alert Box
+ * @param {Object} optionsObject - An object with the following properties:
+ *  - type: The type of the alert. Possible values are "error", "info", "warning", "success"
+ *  - title: The title of the alert
+ *  - text: The main text of the alert
+ *  - confirmation: The text of the confirmation button. If not provided, the alert will be rendered without a confirmation button
+ */
 function CustomAlert(optionsObject = null) {
     let style = "CustomAlert--blue"
     if(optionsObject) {
@@ -117,17 +132,25 @@ function CustomAlert(optionsObject = null) {
 }
 
 
+/**
+ * RenderAlert - A function that renders a Custom Alert Box
+ * @param {Object} Options - An object with the following properties:
+ *  - title: The title of the alert
+ *  - text: The main text of the alert
+ *  - confirmation: The text of the confirmation button. If not provided, the alert will be rendered without a confirmation button
+ * @param {String} colorStyle - The style of the alert. Possible values are "CustomAlert--blue", "CustomAlert--red", "CustomAlert--yellow", "CustomAlert--green"
+ */
 function RenderAlert(Options, colorStyle) {
     let template
     if(Options) {
         template =`
-        ${ChargeHTML(Options.title, Options.text, Options.confirmation)}
         ${ChargeCSS()}
+        ${ChargeHTML(Options.title, Options.text, Options.confirmation)}
         `
     } else {
         template =`
-        ${ChargeHTML()}
         ${ChargeCSS()}
+        ${ChargeHTML()}
         `
     }
     const AlertWrapper = document.createElement("div")

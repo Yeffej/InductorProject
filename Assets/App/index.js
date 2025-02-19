@@ -10,10 +10,9 @@ window.addEventListener("hashchange", (e)=> {
     pageRouter.loadRoute(window.location.href)
 })
 
-
 function GetNavBTs() {
     const bts = document.querySelectorAll(".nav-bt")   
-    return Array.from(bts);
+    return Array.from(bts)
 }
 
 function SetNavBTsHref() {
@@ -22,4 +21,19 @@ function SetNavBTsHref() {
     }
 }
 
-SetNavBTsHref();
+SetNavBTsHref()
+
+// add esencials functionalities for the app
+window.addEventListener("DOMContentLoaded", () => {
+    const menuBtn = document.getElementById("menuBtn")
+    const menu = document.getElementById("nav")
+    const hamburgerBtn = menuBtn.querySelector(".hamburger-icon")
+    const closeBtn = menuBtn.querySelector(".close-icon ")
+
+    const toggleShowMenu = () => {
+        menuBtn.classList.toggle("active")
+        menu.classList.toggle("active")
+    }
+    hamburgerBtn.addEventListener("click", toggleShowMenu)
+    closeBtn.addEventListener("click", toggleShowMenu)
+})

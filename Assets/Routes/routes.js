@@ -1,7 +1,7 @@
 import Home from "../Templates/Home.js"
 import Concepts from "../Templates/Conceptos.js"
 import Podcast from "../Templates/Podcast.js"
-import parameters from "../Templates/Parametros.js"
+import Parameters from "../Templates/Parametros.js"
 import Laws from "../Templates/Leyes.js"
 
 const ALL_ROUTES = [
@@ -23,7 +23,7 @@ const ALL_ROUTES = [
     {
         name: "Parametros",
         url: "/parametros",
-        template: ()=> parameters(),
+        template: ()=> Parameters(),
     },
     {
         name: "Podcast",

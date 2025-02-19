@@ -3,13 +3,16 @@
 /* LOADER STYLES */
 
 :root {
+    --sidebar-width: 210px;
     --titleTextColor: #07215a;
-    --titleSecondTextColor: #0521be;
+    --titleSecondTextColor: #20075a;
     --fontTitle: fantasy;
     --textNavPresenColor: #eeefff;
     --textNavBTColor: #6b048d;
     --textNavBTColorHover: #2111FF; 
-    --textColorS: #e89647;
+    /* --textColorS: #e89647; */
+    --textColorS: #eeefff;
+    /* --textColorS: #6b048d; */
     --navBackgroundColor: #111111;
     --backgroundBT: #02404e;
     --radialBackground: radial-gradient(circle, rgba(2, 0, 36, 1) 0%, rgba(20, 20, 43, 1) 50%, rgba(0, 0, 0, 1) 100%);
@@ -28,16 +31,17 @@ body {
 }
 
 /* NAVIGATION BAR AND MAIN */
-
 .Navigation {
+    position: fixed;
+    width: var(--sidebar-width);
+    height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-right: 5px;
     padding: 5px;
     background-color: var(--navBackgroundColor);
     text-align: center;
-    height: 100vh;
+    z-index: 1;
 }
 .Navigation_Presentation {
     font-size: 1.5em;
@@ -57,44 +61,99 @@ body {
     text-decoration: underline;
 }
 .MainApp {
+    margin-left: var(--sidebar-width);
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
+}
+.MenuBT {
+    display: none;
+    width: 100px;
+    height: 100px;
+    background-color: var(--navBackgroundColor);
+    border-radius: 50%;
+    color: var(--textNavPresenColor);
+    position: fixed;
+    top: -50px;
+    left: -50px;
+    opacity: 0.5;
+    transition: 1s ease-out transform;
+    z-index: 2;
+}
+.MenuBT.active {
+    transform: rotate(180deg);
+}
+.hamburger-icon, .close-icon {
+    width: 25px;
+    height: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    cursor: pointer;
+
+    position: absolute;
+}
+.hamburger-icon {
+    right: 20px;
+    bottom: 18px;
+}
+.hamburger-icon span {
+    display: block;
+    width: 80%;
+    height: 5px;
+    background-color: var(--textNavPresenColor);
+    margin: 2.5px 0;
+}
+.close-icon {
+    left: 20px;
+    top: 18px;
+}
+.close-icon span {
+    display: block;
+    width: 80%;
+    height: 5px;
+    background-color: var(--textNavPresenColor);
+    position: absolute;
+}
+.close-icon span:nth-child(1) {
+    transform: rotate(45deg);
+}
+.close-icon span:nth-child(2) {
+    transform: rotate(-45deg);
 }
 
-/* NAVIGATION BAR AND MAIN */
-
 /* Generals */
-    .modalContainer {
-        display: none;
-        justify-content: center;
-        align-items: center;
-        position: absolute;
-        background-color: #000000a4;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
-    }
-    .modalContainer.show {
-        display: flex;
-    }
-    .nextBT {
-        font-weight: 600;
-        font-size: 1.3em;
-        text-align: end;
-        margin: 5px;
-        padding: .5em;
-        border-radius: 8px;
-        outline: none;
-        animation-duration: 2s;
-        animation-fill-mode: forwards;
-    }
-/* Generals */
+.modalContainer {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    background-color: #000000a4;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+.modalContainer.show {
+    display: flex;
+}
+.nextBT {
+    font-weight: 600;
+    font-size: 1.3em;
+    text-align: end;
+    margin: 5px;
+    padding: 8px;
+    border-radius: 8px;
+    outline: none;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+}
 
-/* HOME */
+/* HOME START */
     .Home {
         text-align: center;
         padding: 10px;
@@ -145,13 +204,13 @@ body {
     }
 
     .Home_modal {
+        width: 60%;
+        padding: 8px;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
         transform: translateY(-1000px);
-        width: 60%;
-        height: 40%;
         background-color: white;
         box-shadow: 1px 1px 3px 1px black;
         border-radius: 10px;
@@ -160,7 +219,7 @@ body {
         animation-timing-function: ease-in-out;
     }
     .Home_modal h2 {
-        margin: 10px 0;
+        margin-bottom: 10px;
         font-size: 1.5em;
     }
     .Home_modal p {
@@ -177,12 +236,12 @@ body {
         padding: .5em;
         font-weight: 600;
         font-size: 1em;
-        width: 100%;
+        width: 80%;
         
     }
     .Home_modal input::placeholder {
         font-weight: 600;
-        font-size: 1em;
+        font-size: .9em;
     }
     .Home_modal button {
         display: inline-block;
@@ -214,9 +273,9 @@ body {
         animation-fill-mode: forwards;
     }
 
-/* HOME */
+/* HOME END */
 
-/* LAWS */
+/* LAWS START */
 .Laws {
     width: 100%;
     text-align: center;
@@ -230,6 +289,9 @@ body {
     background: var(--radialBackground);
     margin-bottom: 10px;
     padding: 10px;
+}
+.Laws_wrapper {
+    padding: 8px;
 }
 .Laws_greeting {
     font-size: 1.3em;
@@ -299,11 +361,12 @@ body {
     color: var(--textNavPresenColor);
     background-color: var(--navBackgroundColor);
 }
-/* LAWS */
+/* LAWS END */
 
 
-/* Concepts */
+/* Concepts START */
 .Concepts {
+    min-height: 100vh;
     background: var(--ConcepsBackground);
     color: var(--textColorS);
     text-align: center;
@@ -315,6 +378,9 @@ body {
     margin: 1em 0;
     text-decoration: underline;
 }
+.Concepts_content {
+    padding: 8px;
+}
 .Concepts_greeting {
     font-size: 1.4em;
     margin-bottom: 1em;
@@ -323,14 +389,14 @@ body {
 .Concepts_art {
     margin-bottom: 2em;
 }
-
 /* Article diplay by plus Botton */
 .Concepts_art_showBT {
     display: inline-block;
     font-size: 2.15em;
     padding: 0 10px;
     margin: 0 8px 1em 0;
-    background-color: var(--titleTextColor);
+    /* background-color: var(--titleTextColor); */
+    background-color: var(--textNavBTColor);
     border: solid 1px black;
     border-radius: 5px;
     box-shadow: 1px 1px 5px 1px white;
@@ -354,19 +420,19 @@ body {
     max-width: 250px;
 }
 .Concepts_NextBT {
-    background-color: var(--backgroundBT);
+    background-color: var(--textNavBTColor);
     color: var(--textNavPresenColor);
     border: none;
 }
 
-/* Concepts */
+/* Concepts END */
 
 
-/* Parameters */
+/* Parameters START */
 .Parameters {
     width: 100%;
     min-height: 100vh;
-    background-color: var(--SecondbackgroundBT);
+    background-color: var(--textNavPresenColor);
     padding: 10px;
 }
 .Parameters_title {
@@ -407,6 +473,7 @@ body {
     animation-iteration-count: infinite;
     animation-fill-mode: forwards;
     transition: 200ms transform;
+    cursor: pointer;
 }
 .Parameters_byeBT:active {
     transform: scale(.7);
@@ -418,6 +485,7 @@ body {
     animation-timing-function: ease-in-out;
     animation-iteration-count: infinite;
     animation-duration: 2s;
+    cursor: pointer;
 }
 /* Modals */
 .Parameters_ModalGreeting {
@@ -472,7 +540,7 @@ body {
     color: var(--textNavPresenColor);
     box-shadow: 0px 0px 8px 0px #9cb4d8;
     border-radius: 8px;
-    background-color: var(--backgroundBT);
+    background-color: var(--titleSecondTextColor);
     padding: 5px;
     animation-fill-mode: forwards;
     animation-duration: 1s;
@@ -503,9 +571,9 @@ body {
     padding: .2em;
 }
 
-/* Parameters */
+/* Parameters END */
 
-/* PODCAST */
+/* PODCAST START */
 .Podcast {
     height: 100%;
     width: 100%;
@@ -532,10 +600,9 @@ body {
     animation-fill-mode: forwards;
 }
 
-/* PODCAST */
+/* PODCAST END */
 
 /* Animations */
-
 @keyframes ModalIn {
     0% {
         transform: translateY(-1000px);
@@ -644,4 +711,25 @@ body {
 }
 
 
-/* Animations */
+/* RESPONSIVE DESIGN */
+@media screen and (max-width: 760px)  {
+    .Navigation {
+        padding-top: 50px;
+        left: -220px;
+        transition: 1s ease-out left;
+    }
+    .Navigation.active {
+        left: 0;
+    }
+    .MainApp {
+        margin-left: 0;
+        transition: 1s ease-out margin-left;
+    }
+    .MenuBT {
+        display: block;
+    }
+
+    .Home_modal {
+        width: 90%;
+    }
+}

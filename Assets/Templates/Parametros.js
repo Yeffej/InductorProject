@@ -1,6 +1,6 @@
 import { UserName }  from "../App/ListenersAdder.js";
 
-const parameters = () => {
+const Parameters = () => {
     return (`
     <section class="Parameters"> 
         <h1 class="Parameters_title">Parametros que intervienen en el resultado de la inductancia.</h1>
@@ -37,4 +37,4 @@ const parameters = () => {
     `)
 }
 
-export default parameters;
+export default Parameters;

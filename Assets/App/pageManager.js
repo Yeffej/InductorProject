@@ -1,4 +1,8 @@
 class pageManager {
+    /**
+     * Show or hide a modal by its type.
+     * @param {string} type - Type of modal."home" | "parameters".
+     */
     ToggleModal(type) {
         if(type === "home") {
             const modalContainer = document.querySelector("#modalContainer");
@@ -32,15 +36,27 @@ class pageManager {
             }
 
         }else {
-            console.error("El tipo de modal no existe dentro de esta App")
+            console.error("This type of modal does not exist")
             return;
         }
 
     }
+
+    /**
+     * Shows the home image.
+     */
     ShowHomeIMG() {
         const HomeImg = document.querySelector("#HomeIMG");
         HomeImg.style.animationName = "FadeIn";
     }
+    
+    /**
+     * Toggles the final modal of the parameters section on and off.
+     * If the modal is not currently showing, it will be shown with the animation "ModalIn";
+     * if the modal is currently showing, it will be hidden with the animation "ModalOut".
+     * @function
+     * @memberof PageManager
+     */
     ToggleFinalModal() {
         const modalContainer = document.querySelector("#ParametersModal-bye");
         const modal = document.querySelector(".Parameters_ModalBye");

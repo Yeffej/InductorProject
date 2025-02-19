@@ -1,11 +1,15 @@
 import PageManager from "./pageManager.js";
 import CustomAlert from "../Extensions/CustomAlert.js";
 
-// Variables que necesito que sean globales dentro de la función:
+// global vars
 const Manager = new PageManager();
 let AlertTimeout;
 let UserName = "";
 
+/**
+ * A function that adds event listeners to the pages based on the given path.
+ * @param {string} path The path to add the event listeners to.
+ */
 function ListenersAdder(path) {
 
     if(path === "/") {
@@ -26,6 +30,17 @@ function ListenersAdder(path) {
             })
         }
 
+        function setUsername() {
+            UserName = nameGetter.value
+            formGetter.style.animationName = "FadeOut"
+            CustomAlert({
+                type: "success",
+                title: "Guardado Exitoso",
+                text: `Gracias por ingresar su nombre o alias, el cual ha sido guardado
+                con éxito, ya puedes continuar.`,
+            })
+        }
+
         startBt.addEventListener("click", ()=> {
             Manager.ToggleModal("home")
         })
@@ -34,25 +49,19 @@ function ListenersAdder(path) {
         })
 
         continueModal.addEventListener("click", ()=>  {
-            console.log(nameGetter.value)
-            if(UserName) {
-                lawsPage.click()
+            if(nameGetter.value) {
+                setUsername()
+                setTimeout(() => lawsPage.click(), 2000)
                 return;
             }
+
             alertErrorName()
         })
 
         formGetter.addEventListener("submit", (e)=> {
             e.preventDefault();
             if(nameGetter.value) {
-                UserName =  nameGetter.value
-                formGetter.style.animationName = "FadeOut"
-                CustomAlert({
-                    type: "success",
-                    title: "Guardado Exitoso",
-                    text: `Gracias por ingresar su nombre o alias, el cual ha sido guardado
-                    con éxito, ya puedes continuar.`,
-                })
+                setUsername()
             }else 
                 alertErrorName();
         })
@@ -67,7 +76,7 @@ function ListenersAdder(path) {
                 confirmation: true,
             })
             const rmAlert = () => {
-                const AlertWrapper = ConfirmationsBT[0].parentElement
+                const AlertWrapper = ConfirmationsBT[0].parentElement.parentElement;
                 const AlertOut = () => {
                     AlertWrapper.remove()
                     AlertWrapper.removeEventListener("animationend", AlertOut)
@@ -84,7 +93,7 @@ function ListenersAdder(path) {
                 rmAlert()
             })
 
-        }, 5000)
+        }, 3000)
 
     }
     if(path === "/leyes") {
