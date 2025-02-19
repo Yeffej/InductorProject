@@ -7,7 +7,7 @@ const Laws = () => {
         <h1 class="Laws_title">Leyes que conforman y explican el funcionamiento de un Inductor.</h1>
         <div class="Laws_wrapper">
             <h3 class="Laws_greeting"> ¡Hola ${UserName}!, En este modulo te estaremos hablando de los siguientes temas: <a id="Laws_ShowWriter">ver</a></h3>
-            <div class="Laws_intro" >
+            <div class="Laws_intro">
                 <p class="Laws_intro_descrip" id="LawsIntroOpacity">Los inductores funcionan gracias a su forma de espirar lo cual aprovecha una mezcla de 3 reglas o leyes que relacionan las corrientes eléctricas con los campos magneticos. Estas son:</p>
                 <ol id="LawsWritterMachine">
                     <li class="LawsWritter_son">Ley de Oersted</li>
@@ -28,14 +28,14 @@ const Laws = () => {
                 <article>
                     <h2>Ley de Faraday</h2>
                     <figure>
-                        <img src="https://lh3.googleusercontent.com/proxy/Fvs7Sa0A522_HCc62DmCOFMgIJxOd4P_3496goOONdlqoNBbtEtnq0wMNZF8NGZe5MYloSA0N_n78zK9CdI-Wl2qu75SfMAJXJxhWqAZfZ-wN_XEUAnVuyGqNMnv" alt="Imagen ley de Faraday">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/7/72/Electromagnetic_induction_-_solenoid_to_loop_-_animation.gif" alt="Imagen ley de Faraday">
                     </figure>
                     <p>La ley de inducción electromagnética de Faraday (o simplemente ley de Faraday) establece que la tensión inducida en un circuito cerrado es directamente proporcional a la rapidez con que cambia en el tiempo el flujo magnético que atraviesa una superficie cualquiera con el circuito como borde. Esto quiere decir en terminos simples que: la variación de un campo magnético puede inducir un voltaje</p>
                 </article>
                 <article>
                     <h2>Ley de Lenz</h2>
                     <figure>
-                        <img src="https://sites.google.com/site/fisicacbtis162/_/rsrc/1468881504153/services/3-2-7-ley-de-lenz/Lenz.gif" alt="Imagen ley de Lenz">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Ley_de_lenz.gif/1920px-Ley_de_lenz.gif" alt="Imagen ley de Lenz">
                     </figure>
                     <p>Esta ley relaciona cambios producidos en el campo eléctrico por un conductor con la propiedad de variar el flujo magnético, y afirma que las tensiones o voltajes aplicadas a un conductor generan una fuerza electro motriz (fem) cuyo campo magnético se opone a toda variación de la corriente original que lo produjo. Esto quiere decir en palabras simples que: <strong>cuando generemos una corriente eléctrica mediante un campo magnético, como lo que hace un generador, la dirección de la corriente inducida es contraria al campo que la genara lo que genera un campo magnético que se opone al campo magnético que genera la corriente.</strong></p>
                 </article>
